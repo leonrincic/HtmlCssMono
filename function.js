@@ -20,18 +20,47 @@ function displayCustomers() {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Actions</th>
             </tr>
         `;
 
         customers.forEach((customer, index) => {
-            customersTable.innerHTML += `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${customer.name}</td>
-                    <td>${customer.email}</td>
-                    <td>${customer.phone}</td>
-                </tr>
-            `;
+            const row = document.createElement("tr");
+
+            const customerIdCell = document.createElement("td");
+            customerIdCell.textContent = index + 1;
+            row.appendChild(customerIdCell);
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = customer.name;
+            row.appendChild(nameCell);
+
+            const emailCell = document.createElement("td");
+            emailCell.textContent = customer.email;
+            row.appendChild(emailCell);
+
+            const phoneCell = document.createElement("td");
+            phoneCell.textContent = customer.phone;
+            row.appendChild(phoneCell);
+
+            const actionsCell = document.createElement("td");
+
+            const updateButton = document.createElement("button");
+            updateButton.textContent = "Update";
+            updateButton.addEventListener("click", function () {
+                displayUpdateForm(customer, index);
+            });
+            actionsCell.appendChild(updateButton);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", function () {
+                deleteCustomerByIndex(index);
+            });
+            actionsCell.appendChild(deleteButton);
+
+            row.appendChild(actionsCell);
+            customersTable.appendChild(row);
         });
     }
 }
@@ -102,3 +131,21 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("updateCustomerForm").addEventListener("submit", updateCustomer);
     document.getElementById("deleteCustomerForm").addEventListener("submit", deleteCustomer);
 });
+
+function displayUpdateForm(customer, index) {
+    document.getElementById("customerId").value = index + 1;
+    document.getElementById("updatedName").value = customer.name;
+    document.getElementById("updatedEmail").value = customer.email;
+    document.getElementById("updatedPhone").value = customer.phone;
+}
+
+// Helper function to delete a customer by index
+function deleteCustomerByIndex(index) {
+    const customers = getCustomersData();
+    if (index >= 0 && index < customers.length) {
+        customers.splice(index, 1);
+        saveCustomersData(customers);
+        displayCustomers();
+    }
+}
+

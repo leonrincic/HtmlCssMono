@@ -98,3 +98,7 @@ table {
 td:first-child {
     font-weight: bold;
 }
+
+td button {
+    margin-right: 5px;
+}
