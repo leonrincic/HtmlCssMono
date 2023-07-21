@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+    <h1>Customers</h1>
+
+    <h2>Add Customer</h2>
+    <form id="addCustomerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" required>
+        <button type="submit">Add Customer</button>
+    </form>
+
+    <h2>Update Customer</h2>
+    <form id="updateCustomerForm">
+        <label for="customerId">Customer ID:</label>
+        <input type="text" id="customerId" required>
+        <label for="updatedName">Updated Name:</label>
+        <input type="text" id="updatedName" required>
+        <label for="updatedEmail">Updated Email:</label>
+        <input type="email" id="updatedEmail" required>
+        <label for="updatedPhone">Updated Phone:</label>
+        <input type="tel" id="updatedPhone" required>
+        <button type="submit">Update Customer</button>
+    </form>
+
+    <h2>All Customers</h2>
+    <table id="customersTable">
+        <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>john@example.com</td>
+            <td>123-456-7890</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jane Smith</td>
+            <td>jane@example.com</td>
+            <td>987-654-3210</td>
+        </tr>
+    </table>
+
+    <h2>Delete Customer</h2>
+    <form id="deleteCustomerForm">
+        <label for="customerIdToDelete">Customer ID:</label>
+        <input type="text" id="customerIdToDelete" required>
+        <button type="submit">Delete Customer</button>
+    </form>
+
+    <script src="function.js"></script>
+</body>
+</html>
